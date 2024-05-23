@@ -1,18 +1,19 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const express = require('express')
+const dotenv = require('dotenv')
 
 // Load environment variables from .env file
-dotenv.config();
+dotenv.config()
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const app = express()
+const PORT = process.env.PORT || 5000
 
-app.use(express.json());
+app.use(express.json())
 
 // Example route to demonstrate environment variable usage
 app.get('/api/message', (req, res) => {
-  res.json({ message: process.env.MESSAGE });
-});
+  res.json({ message: process.env.MESSAGE })
+})
 
 app.listen(PORT, () => {
-  console.log(`
+  console.log(`Server is running on port ${PORT}`)
+})
