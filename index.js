@@ -16,6 +16,18 @@ app.get('/api/message', (req, res) => {
   res.json({ message: process.env.MESSAGE })
 })
 
+app.get('/api/serviceId', (req, res) => {
+  res.json({serviceId: process.env.SERVICE_ID})
+})
+
+app.get('/api/templateId', (req, res) => {
+  res.json({templateId: process.env.TEMPLATE_ID})
+})
+
+app.get('/api/publicKey', (req, res) => {
+  res.json({publicKey: process.env.PUBLIC_KEY})
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
