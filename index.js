@@ -19,20 +19,20 @@ app.get('/emailjs-config', async (req, res) => {
 })
 
 app.post('/send-email', async (req, res) => {
-  const { serviceId, templateId, userId, templateParams } = req.body;
+  const { templateParams } = req.body;
 
   try {
     const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', {
-      service_id: serviceId,
-      template_id: templateId,
-      user_id: userId,
+      service_id: process.env.EMAILJS_SERVICE_ID,
+      template_id: process.env.EMAILJS_TEMPLATE_ID,
+      user_id: process.env.EMAILJS_USER_ID,
       template_params: templateParams,
     });
 
-    res.status(200).json({ message: 'Email sent successfully' });
+    res.status(200).json({ message: 'Email sent successfully', response: response.data });
   } catch (error) {
-    console.error('Error sending email:', error.message);
-    res.status(500).json({ message: 'Failed to send email', error: error.message });
+    console.error('Error sending email:', error.response ? error.response.data : error.message);
+    res.status(500).json({ message: 'Failed to send email', error: error.response ? error.response.data : error.message });
   }
 });
 
