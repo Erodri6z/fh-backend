@@ -26,7 +26,7 @@ app.post('/send-email', async (req, res) => {
       service_id: process.env.SERVICE_ID,
       template_id: process.env.TEMPLATE_ID,
       user_id: process.env.PUBLIC_KEY,
-      access_token: process.env.PRIVATE_KEY,
+      accessToken: process.env.PRIVATE_KEY,
       template_params: templateParams,
     });
 
