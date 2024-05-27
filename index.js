@@ -25,7 +25,8 @@ app.post('/send-email', async (req, res) => {
     const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', {
       service_id: process.env.SERVICE_ID,
       template_id: process.env.TEMPLATE_ID,
-      user_id: process.env.PRIVATE_KEY,
+      user_id: process.env.PUBLIC_KEY,
+      access_token: process.env.PRIVATE_KEY,
       template_params: templateParams,
     });
 
