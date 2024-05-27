@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT
 
 app.use(cors()); 
 app.use(bodyParser.json());
@@ -25,7 +25,7 @@ app.post('/send-email', async (req, res) => {
     const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', {
       service_id: process.env.SERVICE_ID,
       template_id: process.env.TEMPLATE_ID,
-      user_id: process.env.PUBLIC_KEY,
+      user_id: process.env.PRIVATE_KEY,
       template_params: templateParams,
     });
 
@@ -36,7 +36,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-
-app.listen(PORT, '0,0,0,0', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
-})
+});
